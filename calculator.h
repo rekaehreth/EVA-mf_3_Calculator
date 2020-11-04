@@ -2,6 +2,8 @@
 #define CALCULATOR_H
 
 #include <QWidget>
+#include <QRandomGenerator>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Calculator; }
@@ -17,5 +19,9 @@ public:
 
 private:
     Ui::Calculator *ui;
+
+private slots:
+    void on_controlPushButton_clicked();
+    void on_operatorChanged();
 };
 #endif // CALCULATOR_H
