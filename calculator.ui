@@ -15,7 +15,7 @@
   </property>
   <widget class="QLineEdit" name="lineEditOp1">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -30,10 +30,13 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEditOp2">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -47,6 +50,9 @@
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLineEdit" name="resultLineEdit">
@@ -65,6 +71,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="controlPushButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>470</x>
@@ -239,7 +248,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>29</y>
+     <y>30</y>
      <width>611</width>
      <height>71</height>
     </rect>

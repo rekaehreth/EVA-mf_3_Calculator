@@ -6,7 +6,15 @@ Calculator::Calculator(QWidget *parent)
     , ui(new Ui::Calculator)
 {
     ui->setupUi(this);
-    connect( ui->additionRadioButton, SIGNAL( checked() ), this, SLOT( on_operatorChanged() ) );
+    ui->resultLineEdit->setReadOnly( true );
+
+    connect( ui->additionRadioButton, SIGNAL( clicked() ), this, SLOT( on_operatorChanged() ) );
+    connect( ui->subtractionRadioButton, SIGNAL( clicked() ), this, SLOT( on_operatorChanged() ) );
+    connect( ui->multiplicationRadioButton, SIGNAL( clicked() ), this, SLOT( on_operatorChanged() ) );
+    connect( ui->divisionRadioButton, SIGNAL( clicked() ), this, SLOT( on_operatorChanged() ) );
+
+    connect( ui->controlPushButton, SIGNAL( clicked() ), this, SLOT( on_controlPushButton_clicked() ) );
+    connect(ui->resultLineEdit, SIGNAL( returnPressed()), this, SLOT( on_controlPushButton_clicked() ) );
 }
 
 Calculator::~Calculator()
@@ -19,8 +27,8 @@ void Calculator::on_controlPushButton_clicked()
     if ( ui->controlPushButton->text() == "Generate" ) {
         ui->lineEditOp1->setText( QString::number( QRandomGenerator::global()->generate() % 101 ) );
         ui->lineEditOp2->setText( QString::number( QRandomGenerator::global()->generate() % 101 ) );
-        ui->opsGroupBox->setEnabled( true );
-        ui->resultLineEdit->setEnabled( false );
+        ui->opsGroupBox->setEnabled( false );
+        ui->resultLineEdit->setReadOnly( false );
         ui->controlPushButton->setText( "Check" );
     
     }
@@ -42,8 +50,8 @@ void Calculator::on_controlPushButton_clicked()
                 ui->resultListWidget->addItem( "WRONG " + ui->lineEditOp1->text() + " " + ui->opLabel->text() + " " + ui->lineEditOp2->text() );
             }
             // felkészülés a következő feladvány generálására
-            ui->opsGroupBox->setEnabled( false );
-            ui->resultLineEdit->setEnabled( true );
+            ui->opsGroupBox->setEnabled( true );
+            ui->resultLineEdit->setReadOnly( true );
             ui->lineEditOp1->setText( "" );
             ui->lineEditOp2->setText( "" );
             ui->controlPushButton->setText( "Generate" );
